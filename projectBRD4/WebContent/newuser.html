@@ -3,59 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
-<script>
-function myFunction() {
-var pincode, recordstatus,text,email,name;
-pincode = document.getElementById("Customer_PinCode").value;
-    name = document.getElementById("Customer_Name").value;
-    email = document.getElementById("Email_Address").value;
-    recordstatus = document.getElementById("Record_Status").value;
-
-    // If x is Not a Number or less than one or greater than 10
-    if ( pincode.length ==6&&pincode.length!=null) {
-        text = "Input  valid";
-        document.getElementById("pinalert").innerHTML = text;
-    } else {
-        text = "Input not valid";
-         document.getElementById("pinalert").innerHTML = text;
-    }
-   
-
-if(/^([a-zA-Z0-9])*$/.test(name) ) {
-	
-text = "valid";
-document.getElementById("namealert").innerHTML = text;
-//alert('Your search string contains illegal characters.');
-}else
-{
-text = "invalid";
-document.getElementById("namealert").innerHTML = text;
-}
-if(/(.+)@(.+){2,}\.(.+){2,}/.test(email) == true) {
-  text = "valid";
-   document.getElementById("mailalert").innerHTML = text;
-    //alert('Your search string contains illegal characters.');
-}else
-{
-text = "invalid";
- document.getElementById("mailalert").innerHTML = text;
-}
-if(/^[N|M|D|A|R]*$/.test(recordstatus) == true) {
-
-  text = "valid";
-   document.getElementById("statusalert").innerHTML = text;
-    //alert('Your search string contains illegal characters.');
-}else
-{
-text = "invalid";
- document.getElementById("statusalert").innerHTML = text;
-} 
-return true;
-}
-</script>
-
-<title>User Data</title>
+  <title>User Data</title>
 </head>
 <style>
 div.container {
@@ -66,79 +14,96 @@ div.container {
 }
 </style>
 <body>
-
+       
 
 
 
 	<h1>Registration Form</h1>
 	<div class="container">
 		<form action="RegistrationController" method="post">
+		
+				
+					
+				
+					Customer_Code
+					<input type="text" name="Customer_Code" id="Customer_Code" required="" /><br><br>
+				
+				
+					Customer_Name
+                    <input type="text" name="Customer_Name"  id="Customer_Name" required="" pattern="^[a-zA-Z0-9 ]*$"/><br><br>
+                    
 
-
-
-
-			Customer_Code
-			<td><input type="text" name="Customer_Code" id="Customer_Code" value="test"
-				/></td>
-			<br>
-			<br> Customer_Name
-			</td> <input type="text" name="Customer_Name" id="Customer_Name"value="test1"
-				/><br>
-			<p id="namealert"></p>
-
-
-			Customer_Address1
-			</td> <input type="text" name="Customer_Address1" id="Customer_Address1"
-				 value="Customer_Address1"/><br>
-			<br> Customer_Address2
-			</td> <input type="text" name="Customer_Address2" id="Customer_Address2" value="Customer_Address2"/><br>
-			<br> Customer_PinCode <input type="text" name="Customer_PinCode"
-				id="Customer_PinCode"value="Customer_Address2" /><br>
-			<p id="pinalert"></p>
-
-
-			Email_Address
-			</td> <input type="email" name="Email_Address" id="Email_Address"
-				value="Customer_Address2" /><br>
-			<p id="mailalert"></p>
-
-
-			Contact_Number <input type="number" name="Contact_Number"
-				id="Contact_Number" value="Customer_Address2"/><br>
-			<br> Primary_Contact <input type="number" name="Primary_Contact"
-				id="Primary_Contact"value="Customer_Address2" /><br>
-			<br> Record_Status <input type="text" name="Record_Status"
-				id="Record_Status" value="Customer_Address2" /><br>
-			<p id="statusalert"></p>
-
-			Active_Inactive_Flag <select>
-				<option value="Active">Active</option>
-				<option value="Inactive">Inactive</option>
-
-			</select><br>
-			<br> Create_Date <input type="date" name="Create_Date"
-				id="Create_Date"value="Customer_Address2" /><br>
-			<br> Created_By <input type="text" name="Created_By"
-				id="Created_By" value="Customer_Address2"	/><br>
-			<br> Modified_Date <input type="date" name="Modified_Date"
-				id="Modified_Date"value="Customer_Address2" /><br>
-			<br> Modified_By <input type="text" name="Modified_By"
-				id="Modified_By"value="Customer_Address2" /><br>
-			<br> Authorized_Date <input type="date" name="Authorized_Date"
-				id="Authorized_Date" value="Customer_Address2"/><br>
-			<br> Authorized_By <input type="text" name="Authorized_By"
-				id="Authorized_By" value="Customer_Address2"/><br>
-			<br>
-
-
-			<input type="submit" onclick="myFunction()">Submit</button>
+				
+			       Customer_Address1
+					<input type="text" name="Customer_Address1" id="Customer_Address1" required=""/><br><br>
+				
+				
+					Customer_Address2
+					<input type="text" name="Customer_Address2" id="Customer_Address2"/><br><br>
+				
+				
+					Customer_PinCode
+                    <input type="text" name="Customer_PinCode" id="Customer_PinCode" required="" pattern=".{6}" title="Six or more characters"/><br><br>
+                        
+                 
+                
+                        Email_Address
+                    <input type="email" name="Email_Address"  id="Email_Address" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/><br><br> 
+                    
+				
+				
+					 Contact_Number
+					<input type="number" name="Contact_Number" id="Contact_Number" required="" /><br><br>
+				
+				
+					Primary_Contact
+					<input type="number" name="Primary_Contact" id="Primary_Contact" /><br><br>
+				
+				
+					Record_Status
+					<input type="text" name="Record_Status" id="Record_Status" required="" pattern="[N|M|D|A|R]$" title="invalid status"><br><br>
+                    
+				
+					Active_Inactive_Flag
+					
+					<select>
+						<option value="Active" >Active</option>
+						<option value="Inactive">Inactive</option>
+			
+					</select><br><br>
+				
+					Create_Date
+					<input type="text" name="Create_Date" id="Create_Date"required=""  /><br><br>
+				
+				
+					Created_By
+					<input type="text" name="Created_By"  id="Created_By"required=""/><br><br>
+				
+				
+					Modified_Date
+					<input type="text" name="Modified_Date" id="Modified_Date" /><br><br>
+				
+				
+					Modified_By
+					<input type="text" name="Modified_By" id="Modified_By" /><br><br>
+				
+				
+					Authorized_Date
+					<input type="text" name="Authorized_Date" id="Authorized_Date"/><br><br>
+				
+				
+					Authorized_By
+					<input type="text" name="Authorized_By" id="Authorized_By" /><br><br>
+				
+			
+			<input type="submit"/>
 
 		</form>
 		<br>
-
-
-
-
+	
+	
+		
+		
 	</div>
 </body>
 </html>

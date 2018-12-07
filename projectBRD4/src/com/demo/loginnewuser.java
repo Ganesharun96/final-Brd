@@ -1,9 +1,11 @@
-package com.demo;
+ package com.demo;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -18,10 +20,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/RegistrationController")
 public class loginnewuser extends HttpServlet {
+	static PrintWriter out;
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("Newfile.html");
+		out= response.getWriter();
 		try {
 		String Customer_ID = request.getParameter("Customer_ID");
 		String Customer_Code = request.getParameter("Customer_Code");
@@ -41,6 +44,7 @@ public class loginnewuser extends HttpServlet {
 		String Authorized_Date = request.getParameter("Authorized_Date");
 		String Authorized_By = request.getParameter("Authorized_By");
 		customer(Customer_ID, Customer_Code, Customer_Name, Customer_Address1, Customer_Address2, Customer_PinCode, Email_Address, Contact_Number, Primary_Contact, Record_Status, Active_Inactive_Flag, Create_Date, Created_By, Modified_Date, Modified_By, Authorized_Date, Authorized_By);
+		cus(Customer_ID, Customer_Code, Customer_Name, Customer_Address1, Customer_Address2, Customer_PinCode, Email_Address, Contact_Number, Primary_Contact, Record_Status, Active_Inactive_Flag, Create_Date, Created_By, Modified_Date, Modified_By, Authorized_Date, Authorized_By);
 		}catch (Exception exception) {
 			System.out.println(exception);
 		} 
@@ -77,5 +81,17 @@ public class loginnewuser extends HttpServlet {
 	System.out.println(exception);
 }
 	}
+		public static void cus(String Customer_ID, String Customer_Code,String Customer_Name,String Customer_Address1,String Customer_Address2,String Customer_PinCode,String Email_Address,String Contact_Number,String Primary_Contact ,String Record_Status,String Active_Inactive_Flag,String Create_Date,String Created_By,String Modified_Date,String Modified_By,String Authorized_Date,String Authorized_By){  
+			try{  
+			
+			Connection con=DriverManager.getConnection( "jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");  
+			 
+			Statement stmt=con.createStatement();  
+			ResultSet rs=stmt.executeQuery("select * from NEWUSER");  
+			if(rs.next())  
+			out.println(Customer_ID+ " "+ Customer_Code+" " + Customer_Name+" "+ Customer_Address1+" "+Customer_Address2+" "+ Customer_PinCode+" "+Email_Address+" "+Contact_Number+" "+ Primary_Contact+" "+ Record_Status+" "+ Active_Inactive_Flag+" "+ Create_Date+" "+ Created_By+" "+Modified_Date+" "+ Modified_By+" "+Authorized_Date+" "+ Authorized_By);
+			con.close();  
+			}catch(Exception e){ System.out.println(e);}  
+			}  
 
 }

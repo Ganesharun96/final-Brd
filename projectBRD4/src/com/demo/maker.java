@@ -29,6 +29,12 @@ public class maker extends HttpServlet {
 	    try {
 	    	if (selection.equals("recordlevel")) {
 			Recordlevel.main(fileContent,fileName);
+			System.out.println("hai");
+	    	}
+	    	
+	    	else {
+	    		Filelevel.main(fileContent,fileName);
+	    		System.out.println("hai hello");
 	    	}
 //	    	else if (selection.equals("recordlevel"))
 //			{
