@@ -1,16 +1,13 @@
 
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
-@Entity
+
 public class Input{
 	private float loanAmount;
 	private float rateOfInterest;
 	private float tenure;
-	@Id
-    private float numberofInstallments;
+	private float numberofInstallments;
 	public float getLoanAmount() {
 		return loanAmount;
 		}

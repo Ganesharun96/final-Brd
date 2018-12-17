@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/style.css" />
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -73,35 +75,53 @@ body {
 <body>
 
 	<div class="topnav" id="myTopnav">
-		<a href="#home" class="active">Home</a> <a
-			href="http://localhost:8085/show">RepaymentSchedule</a> <a
-			href="#contact">InstallmentNo</a> <a href="#about">About</a> <a
-			href="javascript:void(0);" class="icon" onclick="myFunction()"> <i
-			class="fa fa-bars"></i>
+		<a href="http://localhost:8085/add">Home</a> <a href="#news"
+			>RepaymentSchedule</a> <a href="#contact"class="active">InstallmentNo</a>
+		<a href="#about">About</a> <a href="javascript:void(0);" class="icon"
+			onclick="myFunction()"> <i class="fa fa-bars"></i>
 		</a>
 	</div>
 
-	<div style="padding-left: 16px">
-		<h2>WELCOME</h2>
 
+	<div id="wrapper">
+		<div id="header">
+			<h2>PARTICULAR INSTALLMENT</h2>
+		</div>
 	</div>
 
-	
-	<form:form action="show" modelAttribute="user" method="POST">
-loanAmount: <form:input path="loanAmount" />
-		<br>
-		<br>
-rateOfInterest:<form:input path="rateOfInterest" />
-		<br>
-		<br>
-tenure: <form:input path="tenure" />
-		<br>
-		<br>
-numberofInstallments:<form:input path="numberofInstallments" />
-		<br>
-		<br>
-		<input type="submit" value="submit" />
-		<br>
-	</form:form>
+	<div id="container">
+
+		<div id="content">
+
+
+			<table>
+				<tr>
+					<th>id</th>
+					<th>value</th>
+					<th>outstandingPrinciple</th>
+					<th>interest</th>
+					<th>loanAmount</th>
+					<th>installmentAmount</th>
+				</tr>
+
+				<!-- loop over and print our customers -->
+			
+
+					<tr>
+						<td>${put.id}</td>
+						<td>${put.value}</td>
+						<td>${put.outsandingPrincipals}</td>
+						<td>${put.interst}</td>
+						<td>${put.principals}</td>
+						<td>${put.emi}</td>
+					</tr>
+
+				
+
+			</table>
+
+		</div>
+
+	</div>
 </body>
 </html>
